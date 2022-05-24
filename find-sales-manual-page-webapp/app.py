@@ -10,7 +10,6 @@ def find():
     if request.args.get('mtm'):
         MTM = request.args.get('mtm')
         Machine_Type = MTM[0:4]
-        Doc_ID = 1
         
         def Build_url(Machine_Type, Doc_ID):
             Search_url = "https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_sm/"
@@ -31,8 +30,6 @@ def find():
             Found_MTM = Product_Life_Cycle_Table.find_next('td')
             Found_MTM = Found_MTM.get_text()
             return Found_MTM
-            
-        Find_MTM(Search_url)
         
         def Check_URL(Machine_Type):
             Doc_ID = 1
