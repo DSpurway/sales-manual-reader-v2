@@ -10,6 +10,8 @@ def find():
     if request.args.get('mtm'):
         MTM = request.args.get('mtm')
         Machine_Type = MTM[0:4]
+        Result_URL = "Unknown"
+        Doc_ID = 1
         
         def Build_url(Machine_Type, Doc_ID):
             Search_url = "https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_sm/"
@@ -31,19 +33,20 @@ def find():
             Found_MTM = Found_MTM.get_text()
             return Found_MTM
         
-        def Check_URL(Machine_Type):
+        def Check_URL(Machine_Type, Result_URL):
             Doc_ID = 1
             while Doc_ID < 10 :
                 Search_URL = Build_url(Machine_Type, Doc_ID)
-                Found_MTM = Find_MTM(Search_url)
-                if Found_MTM == MTM:
-                    print("found mtm at " + Search_url)
-                    return Search_URL
+                Found_MTM = Find_MTM(Search_URL)
+                if Found_MTM == MTM:    
+                    print("found mtm at " + Search_URL)
+                    Result_URL = Search_URL
+                    return Result_URL
+                Result_URL = Search_URL
+                return Result_URL
                 Doc_ID += 1
-                
-    else:
-        response = "Missing"
-    return response
+
+        return Check_URL(Machine_Type, Result_URL)
 
 @app.route('/healthz')
 # Added healthcheck endpoint
