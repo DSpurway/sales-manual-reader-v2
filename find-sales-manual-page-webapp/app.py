@@ -46,7 +46,7 @@ def find():
                     return Search_URL
                 Doc_ID += 1
         
-        return = check_url(mtm)
+        return check_url(mtm)
         
     else:
         response = "Missing"
