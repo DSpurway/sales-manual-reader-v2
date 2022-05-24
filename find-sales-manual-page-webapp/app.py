@@ -20,6 +20,7 @@ def find():
             Search_url += "-_h0"
             Search_url += str(Doc_ID)
             Search_url += "/index.html"
+            return Search_url
             
         Build_url(Machine_Type, Doc_ID)
         
@@ -31,6 +32,7 @@ def find():
             Product_Life_Cycle_Table = Product_Life_Cycle_Title.find_next("table")
             Found_MTM = Product_Life_Cycle_Table.find_next('td')
             Found_MTM = Found_MTM.get_text()
+            return Found_MTM
             
         Find_MTM(Search_url)
         
