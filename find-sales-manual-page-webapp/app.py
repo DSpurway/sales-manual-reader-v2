@@ -36,12 +36,17 @@ def find():
             
         Find_MTM(Search_url)
         
-        while Doc_ID < 10 and Found_MTM != MTM:
-            Doc_ID += 1
-            Build_url(Machine_Type, Doc_ID)
-            Find_MTM(Search_url)
+        def check_url(machine_type):
+            Doc_ID = 1
+            while Doc_ID < 10 :
+                Search_URL = Build_url(Machine_Type, Doc_ID)
+                Found_MTM = Find_MTM(Search_url)
+                if Found_MTM == mtm:
+                    print("found mtm at " + search_url)
+                    return Search_URL
+                Doc_ID += 1
         
-        return Search_url
+        return = check_url(mtm)
         
     else:
         response = "Missing"
