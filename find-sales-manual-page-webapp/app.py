@@ -40,10 +40,6 @@ def find():
                     print("found mtm at " + Search_url)
                     return Search_URL
                 Doc_ID += 1
-                
-    else:
-        response = "Missing"
-    return response
 
 @app.route('/healthz')
 # Added healthcheck endpoint
