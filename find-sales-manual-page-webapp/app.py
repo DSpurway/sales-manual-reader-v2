@@ -6,14 +6,13 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def find():
     if request.args.get('mtm'):
         MTM = request.args.get('mtm')
         Machine_Type = MTM[0:4]
         Doc_ID = 1
         
         def Build_url(Machine_Type, Doc_ID):
-            global Search_url
             Search_url = "https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_sm/"
             Search_url += str(Doc_ID)
             Search_url += "/877/ENUS"
@@ -25,7 +24,6 @@ def index():
         Build_url(Machine_Type, Doc_ID)
         
         def Find_MTM(Search_url):
-            global Found_MTM
             html = urlopen(Search_url)
             soup = BeautifulSoup(html, 'html')
             # soup.contents
@@ -41,7 +39,7 @@ def index():
             Build_url(Machine_Type, Doc_ID)
             Find_MTM(Search_url)
         
-        response = Search_url
+        return Search_url
         
     else:
         response = "Missing"
