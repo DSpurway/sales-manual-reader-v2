@@ -40,9 +40,7 @@ def find():
                     print("found mtm at " + Search_url)
                     return Search_URL
                 Doc_ID += 1
-        
-        return Check_URL(Machine_Type)
-        
+                
     else:
         response = "Missing"
     return response
