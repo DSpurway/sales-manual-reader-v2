@@ -4,7 +4,7 @@
   "description": "Node.js application for Node-RED based chatbot",
   "dependencies": {
     "node-red": "1.0.3",
-    "node-red-node-watson": "0.8.1"
+    "node-red-node-watson": "0.10.3"
   },
   "scripts": {
       "start": "node --max-old-space-size=384 node_modules/node-red/red.js sales-manual-reader.json --port 8080"
