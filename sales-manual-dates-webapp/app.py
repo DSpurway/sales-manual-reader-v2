@@ -29,7 +29,7 @@ def index():
         Product_Life_Cycle_Title = soup.find(string="Product life cycle dates")
         Product_Life_Cycle_Title = Product_Life_Cycle_Title.find_next(string="Product life cycle dates")
         Product_Life_Cycle_Table = soup.find("table")
-        output = output +"The Life Cycle Table looks like this: " +Product_Life_Cycle_Table
+        output = output +"The Life Cycle Table looks like this: " +Product_Life_Cycle_Table.text
         return output
 
         MTM = Product_Life_Cycle_Table.find('td')
