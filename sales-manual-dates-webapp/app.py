@@ -12,6 +12,7 @@ def index():
 
     if request.args.get('url'):
         url = request.args.get('url')
+        print(url)
         content['result'] = "Found URL"
         content['url'] = url
 
