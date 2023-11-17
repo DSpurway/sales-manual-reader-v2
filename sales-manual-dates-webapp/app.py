@@ -27,12 +27,10 @@ def index():
         soup = BeautifulSoup(page_content)
 
         Product_Life_Cycle_Title = soup.find(string="Product life cycle dates")
-        output = output +"First instance of Product life cycle date looks like this:" +Product_Life_Cycle_Title +" "
-        return output
         Product_Life_Cycle_Title = Product_Life_Cycle_Title.find_next(string="Product life cycle dates")
-        return(Product_Life_Cycle_Title)
         Product_Life_Cycle_Table = soup.find("table")
-        return(Product_Life_Cycle_Table)
+        output = output +"The Life Cycle Table looks like this: " +Product_Life_Cycle_Table
+        return output
 
         MTM = Product_Life_Cycle_Table.find('td')
         Announce = MTM.find_next('td')
