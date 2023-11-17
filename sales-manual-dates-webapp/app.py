@@ -12,7 +12,7 @@ def index():
 
     if request.args.get('url'):
         url = request.args.get('url')
-        print(url)
+        return(url)
         content['result'] = "Found URL"
         content['url'] = url
 
@@ -26,8 +26,11 @@ def index():
         soup = BeautifulSoup(page_content)
 
         Product_Life_Cycle_Title = soup.find(string="Product life cycle dates")
+        return(Product_Life_Cycle_Title)
         Product_Life_Cycle_Title = Product_Life_Cycle_Title.find_next(string="Product life cycle dates")
+        return(Product_Life_Cycle_Title)
         Product_Life_Cycle_Table = soup.find("table")
+        return(Product_Life_Cycle_Table)
 
         MTM = Product_Life_Cycle_Table.find('td')
         Announce = MTM.find_next('td')
