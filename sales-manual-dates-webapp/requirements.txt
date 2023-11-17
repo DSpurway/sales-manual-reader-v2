@@ -1,3 +1,4 @@
 gunicorn
 Flask
+scrapingant_client 
 bs4
