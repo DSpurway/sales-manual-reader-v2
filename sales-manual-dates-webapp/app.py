@@ -12,12 +12,13 @@ def index():
 
     if request.args.get('url'):
         url = request.args.get('url')
-        return("Input url of:" +url +"recieved")
+        return("Input url of: " +url +" recieved")
         content['result'] = "Found URL"
         content['url'] = url
 
         # Create a ScrapingAntClient instance
         client = ScrapingAntClient(token='8f5726970a07417ba3bf7471c08b0651')
+        return("ScrapingAnt run")
 
         # Get the HTML page rendered content
         page_content = client.general_request(url).content
