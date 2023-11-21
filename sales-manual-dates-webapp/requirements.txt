@@ -1,4 +1,4 @@
 Flask
 selenium
-Chromium
+chromedriver_installer
 bs4
