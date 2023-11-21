@@ -1,7 +1,11 @@
 from flask import Flask, request
 from urllib.request import urlopen
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-from scrapingant_client import ScrapingAntClient
 import json
 
 app = Flask(__name__)
@@ -16,21 +20,30 @@ def index():
         content['result'] = "Found URL"
         content['url'] = url
 
-        # Create a ScrapingAntClient instance
-        client = ScrapingAntClient(token='8f5726970a07417ba3bf7471c08b0651')
-        output = output +"ScrapingAnt run. "
+        chrome_options = Options()
+        chrome_options.add_argument("--headless=new")
+        driver = webdriver.Chrome(options=chrome_options)
+        driver.get('http://selenium.dev')
 
-        # Get the HTML page rendered content
-        page_content = client.general_request(url).content
+        driver.maximize_window() #maximize the window
+        driver.get(url)          #open the URL
+        driver.implicitly_wait(220) #maximum time to load the link
 
-        # Parse content with BeautifulSoup
-        soup = BeautifulSoup(page_content)
+        try:
+            element = WebDriverWait(driver, 60).until(
+                EC.presence_of_element_located((By.ID, "h2-smabstr"))
+            )
+
+            result = driver.page_source
+        finally:
+            driver.quit()
+
+        soup = BeautifulSoup(result, 'html.parser')
 
         Product_Life_Cycle_Title = soup.find(string="Product life cycle dates")
         Product_Life_Cycle_Title = Product_Life_Cycle_Title.find_next(string="Product life cycle dates")
         Product_Life_Cycle_Table = soup.find("table")
         output = output +"The Life Cycle Table looks like this: " +Product_Life_Cycle_Table.text
-        #return output
 
         MTM = Product_Life_Cycle_Table.find('td')
         Announce = MTM.find_next('td')
