@@ -1,6 +1,7 @@
 from flask import Flask, request
 from urllib.request import urlopen
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,9 +21,10 @@ def index():
         content['result'] = "Found URL"
         content['url'] = url
 
+        service = Service()
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get('http://selenium.dev')
 
         driver.maximize_window() #maximize the window
