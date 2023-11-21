@@ -1,4 +1,4 @@
 Flask
 selenium
-chromedriver_installer
+chromedriver_installer==114.0.5735.90
 bs4
