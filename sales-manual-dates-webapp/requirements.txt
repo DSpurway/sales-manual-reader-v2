@@ -1,4 +1,4 @@
 Flask
 selenium
-google-chrome-stable
+standalone-chrome
 bs4
