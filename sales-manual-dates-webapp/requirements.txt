@@ -1,4 +1,3 @@
 Flask
-chrome
 selenium 
 bs4
