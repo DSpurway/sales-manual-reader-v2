@@ -1,11 +1,11 @@
 from flask import Flask, request
 from urllib.request import urlopen
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import json
 
@@ -21,10 +21,8 @@ def index():
         content['result'] = "Found URL"
         content['url'] = url
 
-        service = Service()
-        chrome_options = Options()
-        chrome_options.add_argument("--headless=new")
-        driver = webdriver.Chrome(service=service, options=chrome_options)
+        options = webdriver.FirefoxOptions()
+        driver = webdriver.Firefox(options=options)
         driver.get('http://selenium.dev')
 
         driver.maximize_window() #maximize the window
