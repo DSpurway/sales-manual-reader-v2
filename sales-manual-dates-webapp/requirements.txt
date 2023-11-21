@@ -1,4 +1,4 @@
 Flask
 selenium
-standalone-chrome
+Chromium
 bs4
