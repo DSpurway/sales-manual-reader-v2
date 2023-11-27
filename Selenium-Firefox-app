@@ -1,0 +1,28 @@
+# Use an official Selenium base image with Firefox
+FROM selenium/standalone-firefox:latest
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install Python and Flask
+USER root
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    pip3 install --upgrade pip && \
+    pip3 install Flask
+
+# Install additional dependencies for your Flask app, if needed
+# RUN pip3 install ...
+
+# Expose the port that Flask will run on
+EXPOSE 5000
+
+# Set environment variables
+ENV FLASK_APP=your_flask_app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Run the Flask application
+CMD ["flask", "run"]
