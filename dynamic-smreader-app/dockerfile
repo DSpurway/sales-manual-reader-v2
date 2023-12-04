@@ -1,5 +1,4 @@
-# Use an official Selenium base image with Firefox
-#FROM selenium/standalone-firefox:latest
+FROM python:3
 
 # Set the working directory
 WORKDIR /app
