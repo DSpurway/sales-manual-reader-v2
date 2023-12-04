@@ -12,9 +12,9 @@ RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
     pip3 install --upgrade pip && \
     pip3 install Flask
-    pip3 install headless-firefox
+#    pip3 install headless-firefox
     pip3 install selenium
-    pip3 install selenium-firefox
+#    pip3 install selenium-firefox
     pip3 install bs4
 
 # Expose the port that Flask will run on
