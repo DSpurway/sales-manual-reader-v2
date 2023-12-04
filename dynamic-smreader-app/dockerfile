@@ -1,4 +1,4 @@
-FROM hex0cter/alpine-x:latest
+FROM alpine:latest
 
 RUN apk update \
   && apk add firefox
