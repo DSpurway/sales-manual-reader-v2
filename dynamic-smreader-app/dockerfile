@@ -1,3 +1,8 @@
+FROM hex0cter/alpine-x:latest
+
+RUN apk update \
+  && apk add firefox
+
 FROM python:3
 
 WORKDIR /usr/src/app
