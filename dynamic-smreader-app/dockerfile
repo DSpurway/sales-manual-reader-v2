@@ -14,12 +14,5 @@ COPY app.py ./
 
 COPY . .
 
-# Expose the port that Flask will run on
-#EXPOSE 5000
-
-# Set environment variables
-#ENV FLASK_APP=app.py
-#ENV FLASK_RUN_HOST=0.0.0.0
-
 # Run the Flask application
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python3", "app.py"]
