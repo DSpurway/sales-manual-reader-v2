@@ -10,14 +10,16 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY app.py ./
+
+#COPY . .
 
 # Expose the port that Flask will run on
-EXPOSE 5000
+#EXPOSE 5000
 
 # Set environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+#ENV FLASK_APP=app.py
+#ENV FLASK_RUN_HOST=0.0.0.0
 
 # Run the Flask application
-CMD ["flask", "run"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
