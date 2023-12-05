@@ -1,4 +1,4 @@
 Flask
 selenium
-geckodriver
+webdriver-manager
 bs4
