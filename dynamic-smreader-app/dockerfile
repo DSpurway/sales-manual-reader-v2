@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN apk update && apk add firefox
 
-RUN apt-get update && apt-get install -y python3
+RUN apk update && apk add python3
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
