@@ -2,8 +2,8 @@ FROM alpine:latest
 
 WORKDIR /usr/src/app
 
-RUN apk update && apk add firefox python3 
-RUN apk update && apk add py-pip
+RUN apk update && apk add firefox python3 py-pip
+#RUN apk update && apk add py-pip
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
