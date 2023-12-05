@@ -3,8 +3,6 @@ FROM alpine:3.18
 RUN apk update \
   && apk add firefox
 
-FROM python:3
-
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
