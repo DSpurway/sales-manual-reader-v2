@@ -1,4 +1,3 @@
 Flask
 selenium
-selenium-firefox
 bs4
