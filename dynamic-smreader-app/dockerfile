@@ -13,5 +13,5 @@ COPY app.py ./
 COPY . .
 
 # Run the Flask application
-#CMD [ "python3", "app.py"]
-CMD [ "python3", "test.py"]
+CMD [ "python3", "app.py"]
+#CMD [ "python3", "test.py"]
