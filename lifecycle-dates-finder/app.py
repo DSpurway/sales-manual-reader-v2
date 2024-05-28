@@ -9,7 +9,7 @@ def index():
     content = {}
 
     if request.args.get('MTM'):
-        url = request.args.get('MTM')
+        MTM = request.args.get('MTM')
         content['result'] = "Found MTM"
         content['MTM'] = MTM
 
