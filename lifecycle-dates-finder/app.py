@@ -1,5 +1,5 @@
 from flask import Flask, request
-import csv
+from quickcsv.file import *
 import json
 
 app = Flask(__name__)
@@ -13,15 +13,13 @@ def index():
         content['result'] = "Found MTM"
         content['MTM'] = MTM
 
-        with open("ibm_product_lifecycle_list.csv", encoding='latin1') as csvfile:
-            reader = qc_read(csvfile, delimiter=',')
-            headers = next(reader, None)
-            for row in reader:
-                if MTM == row[5]:
-                    Available = row[6]
-                    Announce = "The input file I am using does not have announcement dates, but it will have been shortly before the GA date, which was " + Available
-                    WDFM = row[8]
-                    EOS = row[12]
+        csvfile=read_csv("ibm_product_lifecycle_list.csv", encoding='latin1')
+        df=create_df(csvfile)
+        row = df[df["MTM"] == MTM]
+        Available = row["GA"].item()
+        Announce = "The input file I am using does not have announcement dates, but it will have been shortly before the GA date, which was " + Available
+        WDFM = row["EOM"].item()
+        EOS = row["EOS"].item()
 
         content['mtm'] = MTM.get_text()
         content['announce'] = Announce.get_text()
