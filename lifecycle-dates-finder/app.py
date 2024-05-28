@@ -14,7 +14,7 @@ def index():
         content['MTM'] = MTM
 
         with open("ibm_product_lifecycle_list.csv", encoding='latin1') as csvfile:
-            reader = csv.reader(csvfile, delimiter=',')
+            reader = qc_read(csvfile, delimiter=',')
             headers = next(reader, None)
             for row in reader:
             if MTM == row[5]:
@@ -34,7 +34,7 @@ def index():
     else:
         content ['result'] = "MTM Missing"
         
-    return json.dumps(content)
+    return content
 
 @app.route('/healthz')
 # Added healthcheck endpoint
