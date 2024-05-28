@@ -1,3 +1,4 @@
 gunicorn
 Flask
 quick-csv
+pandas
