@@ -21,11 +21,11 @@ def index():
         WDFM = row["EOM"].item()
         EOS = row["EOS"].item()
 
-        content['mtm'] = MTM.get_text()
-        content['announce'] = Announce.get_text()
-        content['available'] = Available.get_text()
-        content['wdfm'] = WDFM.get_text()
-        content['eos'] = EOS.get_text()
+        content['mtm'] = MTM
+        content['announce'] = Announce
+        content['available'] = Available.item()
+        content['wdfm'] = WDFM.item()
+        content['eos'] = EOS.item()
 
         content['result'] = "Success"
 
