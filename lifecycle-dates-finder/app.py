@@ -23,9 +23,9 @@ def index():
 
         content['mtm'] = MTM
         content['announce'] = Announce
-        content['available'] = Available.item()
-        content['wdfm'] = WDFM.item()
-        content['eos'] = EOS.item()
+        content['available'] = Available
+        content['wdfm'] = WDFM
+        content['eos'] = EOS
 
         content['result'] = "Success"
 
