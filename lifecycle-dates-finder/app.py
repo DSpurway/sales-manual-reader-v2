@@ -17,7 +17,7 @@ def index():
         df=create_df(csvfile)
         row = df[df["MTM"] == MTM]
         Available = row.iloc[0].at["GA"]
-        Announce = "The input file I am using does not have announcement dates, but it will have been shortly before the GA date, which was " + Available
+        Announce = "is missing, as the input file I am using does not have announcement dates, but it will have been shortly before the GA date, which was " + Available
         WDFM = row.iloc[0].at["EOM"]
         EOS = row.iloc[0].at["EOM"]
 
